@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Score Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="container">
+                <h1><i class="fas fa-futbol"></i> Soccer Score Predictor</h1>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+                        <li><a href="{{ url_for('about') }}">About</a></li>
+                        <li><button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <main>
+            <section class="prediction-form">
+                <h2><i class="fas fa-chart-line"></i> Predict Match Outcome</h2>
+                <form id="prediction-form">
+                    <div class="form-group">
+                        <label for="home-team">Home Team</label>
+                        <select id="home-team" name="home_team" required>
+                            <option value="">Select Home Team</option>
+                            {% for team in teams %}
+                            <option value="{{ team }}">{{ team }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="away-team">Away Team</label>
+                        <select id="away-team" name="away_team" required>
+                            <option value="">Select Away Team</option>
+                            {% for team in teams %}
+                            <option value="{{ team }}">{{ team }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary"><i class="fas fa-magic"></i> Predict</button>
+                        <button type="reset" class="btn secondary"><i class="fas fa-redo"></i> Reset</button>
+                    </div>
+                </form>
+                <div id="loading-spinner" class="loading-spinner"></div>
+            </section>
+            
+            <section class="prediction-results" id="results-section">
+                <h2><i class="fas fa-poll"></i> Prediction Results</h2>
+                <div class="result-card">
+                    <div class="teams">
+                        <div class="team home">
+                            <div class="team-logo" id="home-team-logo"></div>
+                            <span id="home-team-display"></span>
+                            <div class="probability">
+                                <div class="probability-bar">
+                                    <div class="probability-fill home-probability"></div>
+                                </div>
+                                <span class="probability-text" id="home-win-probability">0%</span>
+                            </div>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="team away">
+                            <div class="team-logo" id="away-team-logo"></div>
+                            <span id="away-team-display"></span>
+                            <div class="probability">
+                                <div class="probability-bar">
+                                    <div class="probability-fill away-probability"></div>
+                                </div>
+                                <span class="probability-text" id="away-win-probability">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="draw">
+                        <h3>Draw Probability</h3>
+                        <div class="probability">
+                            <div class="probability-bar">
+                                <div class="probability-fill draw-probability"></div>
+                            </div>
+                            <span class="probability-text" id="draw-probability">0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="prediction-summary">
+                        <div class="summary-item">
+                            <h3><i class="fas fa-trophy"></i> Predicted Result</h3>
+                            <span id="predicted-result" class="highlight">Unknown</span>
+                        </div>
+                        <div class="summary-item">
+                            <h3><i class="fas fa-futbol"></i> Expected Score</h3>
+                            <span id="expected-score" class="highlight">0 - 0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="prediction-history" id="prediction-history">
+                <div class="history-title">
+                    <h2><i class="fas fa-history"></i> Recent Predictions</h2>
+                    <span class="clear-history" id="clear-history">Clear History</span>
+                </div>
+                <div class="history-list" id="history-list">
+                    <!-- Prediction history items will be added here via JavaScript -->
+                    <div class="empty-history">No prediction history yet. Make your first prediction!</div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Soccer Score Predictor | <i class="fas fa-code"></i> Powered by Machine Learning</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
