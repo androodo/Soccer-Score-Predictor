@@ -1,6 +1,6 @@
 # Soccer Score Predictor
 
-A machine learning application to predict soccer match outcomes with 15% improved accuracy using historical player statistics and team performance data.
+A machine learning application to predict soccer match outcomes using historical player statistics and team performance data.
 
 ## Features
 
