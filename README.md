@@ -74,10 +74,6 @@ A machine learning application to predict soccer match outcomes with 15% improve
 - **Flask**: Web application framework
 - **HTML/CSS/JavaScript**: Front-end development
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Acknowledgments
 
 - Data sourced from football statistics websites
