@@ -1,5 +1,7 @@
 # Soccer Score Predictor
 
+![Soccer Score Predictor Screenshot](Soccer-Score-Predictor-Image.png)
+
 A machine learning application to predict soccer match outcomes using historical player statistics and team performance data.
 
 ## Features
